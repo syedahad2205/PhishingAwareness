@@ -20,7 +20,7 @@
         #glow-border {
             border: 5px solid #00ff00;
             border-radius: 10px;
-            animation: glow 2s linear infinite, borderMove 5s linear infinite;
+            animation: glow 2s linear infinite;
         }
 
         @keyframes glow {
@@ -37,20 +37,6 @@
             100% {
                 border-color: #00ff00;
                 box-shadow: 0 0 10px #00ff00;
-            }
-        }
-
-        @keyframes borderMove {
-            0% {
-                margin-left: 0;
-            }
-
-            50% {
-                margin-left: 10px;
-            }
-
-            100% {
-                margin-left: 0;
             }
         }
 
