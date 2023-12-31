@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+    <title>Funky Phishing Alert</title>
+    <style>
+        body {
+            font-family: 'Inconsolata', monospace;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        #glow-border {
+            border: 5px solid #00ff00;
+            border-radius: 10px;
+            animation: glow 2s linear infinite, borderMove 5s linear infinite;
+        }
+
+        @keyframes glow {
+            0% {
+                border-color: #00ff00;
+                box-shadow: 0 0 10px #00ff00;
+            }
+
+            50% {
+                border-color: #00ff00;
+                box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+
+            100% {
+                border-color: #00ff00;
+                box-shadow: 0 0 10px #00ff00;
+            }
+        }
+
+        @keyframes borderMove {
+            0% {
+                margin-left: 0;
+            }
+
+            50% {
+                margin-left: 10px;
+            }
+
+            100% {
+                margin-left: 0;
+            }
+        }
+
+        header {
+            background-color: #0a0b0c;
+            padding: 1em;
+            color: #ffffff;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffffff;
+            animation: bounce 1s infinite alternate;
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #dee2e6;
+        }
+
+        ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 0;
+            padding-left: 20px;
+            color: #adb5bd;
+        }
+
+        footer {
+            background-color: #0a0b0c;
+            color: #ffffff;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        #timer {
+            color: #ff0000;
+            /* Red color for a dangerous look */
+            font-size: 24px;
+            margin-top: 20px;
+            font-family: 'Inconsolata', monospace;
+            display: inline-block;
+            animation: bombTick 1s linear infinite;
+        }
+
+        @keyframes bombTick {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #timer-container {
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #timer-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ff0000;
+            /* Red color for a dangerous look */
+            position: absolute;
+            animation: circleFill 1s linear infinite;
+        }
+
+        @keyframes circleFill {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #timer-text {
+            color: #ff0000;
+            /* Red color for a dangerous look */
+            font-size: 24px;
+            font-family: 'Inconsolata', monospace;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #pixelated-effect {
+            width: 100vw;
+            height: 100vh;
+            background: url('path/to/your/broken-phone-image.jpg') center/cover no-repeat;
+            filter: blur(10px) grayscale(100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            animation: pixelate 2s ease-out;
+        }
+
+        @keyframes pixelate {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(50);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="claimHeading">Claim your free data!</h1>
+    </header>
+
+    <div id="glow-border"> <!-- Add a div with a specific ID for the glowing border -->
+        <section>
+            <p id="intro"></p>
+            <p id="message"></p>
+            <ul>
+                <li id="tip1"></li>
+                <li id="tip2"></li>
+                <li id="tip3"></li>
+                <li id="tip4"></li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p id="footer"></p>
+    </footer>
+
+
+    <script>
+        // Function to hide the content initially
+        function hideContent() {
+            const glowBorder = document.getElementById('glow-border');
+            glowBorder.style.display = 'none';
+        }
+
+        // Function to show the content with a bomb ticking timer
+        function showContent() {
+            const glowBorder = document.getElementById('glow-border');
+            glowBorder.style.display = 'block';
+
+            // Typing animation
+            const intro = document.getElementById('intro');
+            const message = document.getElementById('message');
+            const tip1 = document.getElementById('tip1');
+            const tip2 = document.getElementById('tip2');
+            const tip3 = document.getElementById('tip3');
+            const tip4 = document.getElementById('tip4');
+            const footer = document.getElementById('footer');
+
+            const text1 = "Hello there, curious clicker! 👀";
+            const text2 = "You've stumbled upon an exclusive offer! But hold on, before you get too excited, let's talk about online safety. 🛡️";
+            const text3 = [
+                "Always check the link before clicking. Hover over it to see the actual URL and ensure it matches the expected website. 🔍",
+                "Verify the source. Legitimate offers won't ask for sensitive information upfront. Check for official communication channels. 🕵️‍♂️",
+                "Look for secure connections. Legitimate websites use 'https://' instead of 'http://'. Check for the padlock symbol in the address bar. 🔒",
+                "Stay informed about online security. Regularly update your software, use strong passwords, and be cautious about unexpected offers. 🚨"
+            ];
+            const text4 = "Thanks for playing along! Remember, being cautious online is the real reward. 🌐🛡️";
+
+            function typeWriter(element, text, speed) {
+                let i = 0;
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            setTimeout(() => typeWriter(intro, text1, 50), 1000);
+            setTimeout(() => typeWriter(message, text2, 50), 2000);
+
+            // Display tips one by one
+            setTimeout(() => typeWriter(tip1, text3[0], 50), 4000);
+            setTimeout(() => typeWriter(tip2, text3[1], 50), 6000);
+            setTimeout(() => typeWriter(tip3, text3[2], 50), 8000);
+            setTimeout(() => typeWriter(tip4, text3[3], 50), 10000);
+
+            setTimeout(() => typeWriter(footer, text4, 50), 12000);
+        }
+
+        // Function to display a bomb ticking timer and hide the header and claim heading
+        function showTimer() {
+            const timer = document.createElement('div');
+            timer.id = 'timer';
+            document.body.appendChild(timer);
+
+            // Hide the header and claim heading initially
+            document.querySelector('header').style.display = 'none';
+            document.getElementById('claimHeading').style.display = 'none';
+
+            let countdown = 3;
+            const interval = setInterval(() => {
+                timer.textContent = `💣 Time Left: ${countdown}s`;
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    document.body.removeChild(timer);
+                    document.querySelector('header').style.display = 'block'; // Display the header
+                    document.getElementById('claimHeading').style.display = 'block'; // Display the claim heading
+                    showContent();
+                }
+            }, 1000);
+        }
+
+        // Hide content initially and show the timer
+        hideContent();
+        showTimer();
+    </script>
+</body>
+
+</html>
